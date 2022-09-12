@@ -12,6 +12,9 @@
         //Load Composer's autoloader
         require '../vendor/autoload.php';
 
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+        $dotenv->load();
+
         if(isset($_POST['attachments']))
         {
             $fileName = $_FILES['attachments']['name'];
