@@ -117,7 +117,7 @@
                 $response = 'Message has been sent';
                 header("Location: ../index.php?response=$response");
             } catch (Exception $e) {
-                $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}" . $_ENV['SMTP_CONNECTION'];
                 header("Location: ../index.php?response=$response");
             }
         }
