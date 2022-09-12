@@ -1,1 +1,6 @@
+#Folders:
 phpMyAdmin/
+vendor/
+
+#Envirement Variables:
+.env
