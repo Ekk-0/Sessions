@@ -45,10 +45,10 @@
                             //Server settings
                             //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
                             $mail->isSMTP();                                            //Send using SMTP
-                            $mail->Host       = 'smtp.sendgrid.net';                     //Set the SMTP server to send through
+                            $mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
                             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                            $mail->Username   = 'apikey';                     //SMTP username
-                            $mail->Password   = $_ENV['SMTP_CONNECTION'];                               //SMTP password
+                            $mail->Username   = $_ENV['SMTP_USERNAME'];                     //SMTP username
+                            $mail->Password   = $_ENV['SMTP_PWD'];                               //SMTP password
                             $mail->SMTPSecure = 'PHPMailer::ENCRYPTION_STARTTLS';            //Enable implicit TLS encryption
                             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -74,7 +74,7 @@
                             $response = 'Message has been sent';
                             header("Location: ../index.php?response=$response");
                         } catch (Exception $e) {
-                            $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                            $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}". $_ENV['SMTP_USERNAME'] . $_ENV['SMTP_PWD'];
                             header("Location: ../index.php?response=$response");
                         }
                     }
@@ -97,10 +97,10 @@
                 //Server settings
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
                 $mail->isSMTP();                                            //Send using SMTP
-                $mail->Host       = 'smtp.sendgrid.net';                     //Set the SMTP server to send through
+                $mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                $mail->Username   = 'apikey';                     //SMTP username
-                $mail->Password   = $_ENV['SMTP_CONNECTION'];                               //SMTP password
+                $mail->Username   = $_ENV['SMTP_USERNAME'];                     //SMTP username
+                $mail->Password   = $_ENV['SMTP_PWD'];                               //SMTP password
                 $mail->SMTPSecure = 'PHPMailer::ENCRYPTION_STARTTLS';            //Enable implicit TLS encryption
                 $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -120,7 +120,7 @@
                 $response = 'Message has been sent';
                 header("Location: ../index.php?response=$response");
             } catch (Exception $e) {
-                $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}" . $_ENV['SMTP_CONNECTION'];
+                $response = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 header("Location: ../index.php?response=$response");
             }
         }

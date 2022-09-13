@@ -44,6 +44,7 @@
             </form>
             <?php
                 if(isset($_GET['login'])){
+                    $forgot = "<br><strong><a href='forgot.php'>Forgot your password?</a></strong>";
                     $response = $_GET['login'];
                     switch($response)
                     {
@@ -52,12 +53,17 @@
                             break;
                         case "uid":
                             echo "<br><p class='alert  alert-danger'>Your username is incorrect!<p>";
+                            echo $forgot;
                             break;
                         case "pwd":
                             echo "<br><p class='alert  alert-danger'>Your password is incorrect!<p>";
+                            echo $forgot;
                             break;
                         case "success":
                             echo "<br><p class='alert  alert-success'>You logged in successfully!<p>";
+                            break;
+                        case "updated":
+                            echo "<br><p class='alert  alert-success'>Password updated!<p>";
                             break;
                         default:
                             break;
