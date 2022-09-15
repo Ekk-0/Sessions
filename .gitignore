@@ -1,6 +1,8 @@
 #Folders:
 phpMyAdmin/
 vendor/
+profileImages/
+uploads/
 
 #Envirement Variables:
 .env
